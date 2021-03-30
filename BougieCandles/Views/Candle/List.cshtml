@@ -1,0 +1,14 @@
+﻿@using BougieCandles.ViewModels
+@model CandleListViewModel
+<div>
+    <h2>All Candles Are Shown Here </h2>
+</div>
+
+<h2>@Model.CurrentCategory</h2>
+
+@{
+    foreach (Candle candle in Model.Candles)
+    {
+        @Html.Partial("CandleSummary", candle)
+    }
+}

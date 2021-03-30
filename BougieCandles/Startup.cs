@@ -1,4 +1,7 @@
 using BougieCandles.Data;
+using BougieCandles.Data.Interfaces;
+using BougieCandles.Data.Mocks;
+using BougieCandles.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,9 +27,21 @@ namespace BougieCandles
 
         public IConfiguration Configuration { get; }
 
+        private IConfigurationRoot _configurationRoot;
+        //public Startup(IHostingEnvironment hostingEnvironment)
+        //{
+        //    _configurationRoot = new ConfigurationBuilder().SetBasePath(WebHostEnvironment.ContentRootPath)
+        //    .AddJsonFile("appsettings.json")
+        //    .Build();
+        //}
+
+      
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICandleRepository, CandleRepository>();
+            services.AddMvc();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
