@@ -21,9 +21,9 @@ namespace BougieCandles.Data.Models
         public bool Instock { get; set; }
         public int Stock { get; set; }
 
-        public bool IsPreferredItem { get; set; }
+        public bool IsPreferredCandle { get; set; }
         public Category Category { get; set; }
-        public Producer Producer { get; set; }
+        //public Producer Producer { get; set; }
 
     }
 }

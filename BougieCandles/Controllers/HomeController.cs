@@ -25,7 +25,7 @@ namespace BougieCandles.Controllers
             {
                 PreferredCandles = _candleRepository.PreferredCandles
             };
-            return View();
+            return View(homeViewModel);
         }
     }
     //public class HomeController : Controller

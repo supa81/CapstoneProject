@@ -30,7 +30,7 @@ namespace BougieCandles.Data.Models
                          Instock = true,
                          Stock = 10,
                          ShortDescription = "this is were the candle description will go",
-                         IsPreferredItem = true,
+                         IsPreferredCandle = true,
                          ImageThumbNail = "https://www.google.com/aclk?sa=l&ai=DChcSEwiBhM2xxs3vAhUFH60GHUrLC94YABAGGgJwdg&sig=AOD64_2gyuTor8HrY3AfwQbd15Bdwon6Sw&adurl&ctype=5&ved=2ahUKEwjjrLyxxs3vAhVDZawKHYctA5IQwg96BAgBEFw"
                      },
                     new Candle
@@ -41,7 +41,7 @@ namespace BougieCandles.Data.Models
                         ShortDescription = "this is were the candle description will go",
                         Instock = true,
                         Stock = 10,
-                        IsPreferredItem = true,
+                        IsPreferredCandle = true,
                         ImageThumbNail = "https://www.google.com/aclk?sa=l&ai=DChcSEwiBhM2xxs3vAhUFH60GHUrLC94YABAMGgJwdg&sig=AOD64_1dlf8qFvncZKZ6dmyFCmif4xTaIA&adurl&ctype=5&ved=2ahUKEwjjrLyxxs3vAhVDZawKHYctA5IQvhd6BAgBEH8"
                     },
                     new Candle
@@ -51,7 +51,7 @@ namespace BougieCandles.Data.Models
                         ShortDescription = "this is were the candle description will go",
                         Instock = true,
                         Stock = 10,
-                        IsPreferredItem = true,
+                        IsPreferredCandle = true,
                         ImageThumbNail = "https://www.google.com/aclk?sa=l&ai=DChcSEwiBhM2xxs3vAhUFH60GHUrLC94YABAHGgJwdg&sig=AOD64_34YeSCDwe3T81P7uT9sw6Bl2h_Qg&adurl&ctype=5&ved=2ahUKEwjjrLyxxs3vAhVDZawKHYctA5IQvhd6BAgBEHg"
                     },
                    new Candle
@@ -61,7 +61,7 @@ namespace BougieCandles.Data.Models
                        ShortDescription = "this is were the candle description will go",
                        Instock = true,
                        Stock = 10,
-                       IsPreferredItem = true,
+                       IsPreferredCandle = true,
                        ImageThumbNail = "https://www.google.com/aclk?sa=l&ai=DChcSEwiBhM2xxs3vAhUFH60GHUrLC94YABAQGgJwdg&sig=AOD64_2PsGA5koqDoG4zo_3KsOzrtYXCgQ&adurl&ctype=5&ved=2ahUKEwjjrLyxxs3vAhVDZawKHYctA5IQvhd6BQgBEIkB"
 
                    }

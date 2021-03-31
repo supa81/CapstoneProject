@@ -20,7 +20,7 @@ namespace BougieCandles.Data.Repositories
         //public IEnumerable<Item> PreferredItems => (IEnumerable<Item>)_appDbContext.ShoppingStoreEntities.Where(p => p.Item.).Include(c => c.Categories);
         public IEnumerable<Candle> Candles => _appDbContext.Candles.Include(c => c.Category);
 
-        public IEnumerable<Candle> PreferredCandles => _appDbContext.Candles.Where(p => p.IsPreferredItem).Include(c => c.Category);
+        public IEnumerable<Candle> PreferredCandles => _appDbContext.Candles.Where(p => p.IsPreferredCandle).Include(c => c.Category);
 
         public Candle GetCandleById(int candleId) => _appDbContext.Candles.FirstOrDefault(p => p.CandleId == candleId);
 

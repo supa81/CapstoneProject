@@ -1,11 +1,23 @@
-﻿@using BougieCandles.ViewModels
-@model CandleListViewModel
-
-
+﻿@model BougieCandles.ViewModels.CandleListViewModel
 
 <div class="row marginTop">
-    @foreach (var Candle in Model.Candles)
+    @foreach (var candle in Model.Candles)
     {
-        @Html.Partial("CandlesSummary", Candle)
+        @Html.Partial("CandlesSummary", candle)
     }
 </div>
+
+
+
+@*@using BougieCandles.ViewModels
+
+    @model CandleListViewModel
+
+
+
+    <div class="row marginTop">
+        @foreach (var Candle in Model.Candles)
+        {
+            @Html.Partial("CandlesSummary", Candle)
+        }
+    </div>*@

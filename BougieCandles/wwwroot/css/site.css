@@ -1,4 +1,56 @@
 ﻿
+
+#cartButton {
+    margin-right: 8px;
+}
+
+nav {
+    padding: 8px;
+}
+
+.loginForm {
+    margin: 10%;
+}
+
+.checkoutForm {
+    margin-top: 5%;
+}
+
+.orderForm {
+    margin-top: 5%;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #2fa4e7;
+}
+
+a.remove {
+    text-decoration: none;
+}
+
+    a.remove:hover {
+        color: blue;
+    }
+
+.center_div {
+    margin: 0 auto;
+    width: 80% /* value of your choice which suits your alignment */
+}
+
+.marginTop {
+    margin-top: 5%;
+}
+
+.marginTop1 {
+    margin-top: 2%;
+}
+
+.formPullRightButton {
+    margin-right: 10px !important
+}
+
+.carousel img {
+    min-width: 100%;
+}
 /*!
   * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
   * Copyright 2013-2016 Start Bootstrap
@@ -11,9 +63,9 @@
      src: url('sourcesanspro-regular.ttf') format('truetype');
  }*/
 
-body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-image: url('/images/pattern.png');
+/*body {
+    padding-top: 70px;*/ /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*background-image: url('/images/pattern.png');
     background-repeat: repeat;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -102,7 +154,7 @@ footer {
 .btn {
     background-color: #fcaeae !important;
     border-color: #fba1a1 !important;
-}
+}*/
 
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification

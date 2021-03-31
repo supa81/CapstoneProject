@@ -15,7 +15,7 @@
                 <!--Text-->
                 <p class="card-text">@Model.ShortDescription.</p>
                 <p class="btn btn-group pull-right">
-                    <a asp-controller="Drink" asp-action="List" class="btn btn-default">Show all drinks</a>
+                    <a asp-controller="Candle" asp-action="List" class="btn btn-default">Show all candles</a>
                     <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-cardId="@Model.CandleId">
                         Add @Model.Name to cart
                     </a>

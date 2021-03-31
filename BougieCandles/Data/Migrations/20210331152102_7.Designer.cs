@@ -40,7 +40,7 @@ namespace BougieCandles.Data.Migrations
                     b.Property<bool>("Instock")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsPreferredItem")
+                    b.Property<bool>("IsPreferredCandle")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
