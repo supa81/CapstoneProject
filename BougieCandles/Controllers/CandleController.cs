@@ -14,7 +14,7 @@ namespace BougieCandles.Controllers
         private readonly ICandleRepository _candleRepository;
         private readonly ICategoryRepository _categoryRepository;
         public CandleController(ICandleRepository candleRepository, ICategoryRepository categoryRepository)
-        {   
+        {
             _candleRepository = candleRepository;
             _categoryRepository = categoryRepository;
         }
@@ -40,6 +40,34 @@ namespace BougieCandles.Controllers
                 Candles = candles,
                 CurrentCategory = currentCategory
             });
+
+        }
+        public ViewResult Search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Candle> candles;
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                candles = _candleRepository.Candles.OrderBy(p => p.CandleId);
+            }
+            else
+            {
+                candles = _candleRepository.Candles.Where(p => p.Name.ToLower().Contains(_searchString.ToLower()));
+            }
+
+            return View("~/Views/Drink/List.cshtml", new CandleListViewModel { Candles = candles, CurrentCategory = "All candles" }); ;
+        }
+
+        public ViewResult Details(int candleId)
+        {
+            var candle = _candleRepository.Candles.FirstOrDefault(d => d.CandleId == candleId);
+            if (candle == null)
+            {
+                return View("~/Views/Error/Error.cshtml");
+            }
+            return View(candle);
         }
     }
 }

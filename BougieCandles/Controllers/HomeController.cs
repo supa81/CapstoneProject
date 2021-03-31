@@ -1,4 +1,6 @@
-﻿using BougieCandles.Models;
+﻿using BougieCandles.Data.Interfaces;
+using BougieCandles.Models;
+using BougieCandles.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +13,44 @@ namespace BougieCandles.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ICandleRepository _candleRepository;
+        public HomeController(ICandleRepository candleRepository)
         {
-            _logger = logger;
+            _candleRepository = candleRepository;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
+            var homeViewModel = new HomeViewModel
+            {
+                PreferredCandles = _candleRepository.PreferredCandles
+            };
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+    //public class HomeController : Controller
+    //{
+    //    private readonly ILogger<HomeController> _logger;
+
+    //    public HomeController(ILogger<HomeController> logger)
+    //    {
+    //        _logger = logger;
+    //    }
+
+    //    public IActionResult Index()
+    //    {
+    //        return View();
+    //    }
+
+    //    public IActionResult Privacy()
+    //    {
+    //        return View();
+    //    }
+
+    //    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    //    public IActionResult Error()
+    //    {
+    //        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    //    }
+    //}
 }

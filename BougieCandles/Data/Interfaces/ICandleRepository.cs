@@ -10,7 +10,6 @@ namespace BougieCandles.Data.Interfaces
     {
         IEnumerable<Candle> Candles { get; }
         IEnumerable<Candle> PreferredCandles { get; }
-
         Candle GetCandleById(int candleId);
 
     }
