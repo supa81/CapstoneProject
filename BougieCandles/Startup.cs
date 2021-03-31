@@ -27,7 +27,7 @@ namespace BougieCandles
 
         public IConfiguration Configuration { get; }
 
-        private IConfigurationRoot _configurationRoot;
+        //private IConfigurationRoot _configurationRoot;
         //public Startup(IHostingEnvironment hostingEnvironment)
         //{
         //    _configurationRoot = new ConfigurationBuilder().SetBasePath(WebHostEnvironment.ContentRootPath)
@@ -39,16 +39,17 @@ namespace BougieCandles
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICandleRepository, CandleRepository>();
             services.AddMvc();
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<AppDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //services.AddTransient<ICategoryRepository, CategoryRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

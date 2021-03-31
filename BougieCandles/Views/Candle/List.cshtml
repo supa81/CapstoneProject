@@ -1,14 +1,11 @@
 ﻿@using BougieCandles.ViewModels
 @model CandleListViewModel
-<div>
-    <h2>All Candles Are Shown Here </h2>
-</div>
 
-<h2>@Model.CurrentCategory</h2>
 
-@{
-    foreach (Candle candle in Model.Candles)
+
+<div class="row marginTop">
+    @foreach (var Candle in Model.Candles)
     {
-        @Html.Partial("CandleSummary", candle)
+        @Html.Partial("CandlesSummary", Candle)
     }
-}
+</div>

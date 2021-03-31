@@ -9,7 +9,7 @@ namespace BougieCandles.Data.Mocks
 {
     public class MockCandleRepository : ICandleRepository
     {
-    
+
         private readonly ICategoryRepository _categoryRepository = new MockCategoryRepository();
 
         public IEnumerable<Candle> Candles
@@ -63,6 +63,9 @@ namespace BougieCandles.Data.Mocks
             }
         }
         public IEnumerable<Candle> PreferredItems { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public IEnumerable<Candle> PreferredCandles => throw new NotImplementedException();
+
         // IEnumerable<Item> IItemRepository.Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Candle GetCandleById(int CandleId)

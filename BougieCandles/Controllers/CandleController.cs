@@ -26,7 +26,7 @@ namespace BougieCandles.Controllers
             if (string.IsNullOrEmpty(category))
             {
                 candles = _candleRepository.Candles.OrderBy(p => p.CandleId);
-                currentCategory = "All drinks";
+                currentCategory = "All candles";
             }
             else
             {
@@ -37,7 +37,7 @@ namespace BougieCandles.Controllers
 
             return View(new CandleListViewModel
             {
-                Candle = candles,
+                Candles = candles,
                 CurrentCategory = currentCategory
             });
         }

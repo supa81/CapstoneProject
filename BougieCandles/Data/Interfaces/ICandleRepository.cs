@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BougieCandles.Data.Interfaces
 {
-    interface ICandleRepository
+    public interface ICandleRepository
     {
         IEnumerable<Candle> Candles { get; }
         IEnumerable<Candle> PreferredCandles { get; }

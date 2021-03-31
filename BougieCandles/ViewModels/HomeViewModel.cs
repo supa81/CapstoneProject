@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BougieCandles.Data.Interfaces
+namespace BougieCandles.ViewModels
 {
-    public interface ICategoryRepository
+    public class HomeViewModel
     {
-        IEnumerable<Category> Categories { get; }
-
+        public IEnumerable<Candle> PreferredCandles { get; set; }
     }
 }

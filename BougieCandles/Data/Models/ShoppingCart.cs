@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 namespace BougieCandles.Data.Models
 {
     public class ShoppingCart
-    {private readonly ApplicationDbContext DbContext;
-        private ShoppingCart(ApplicationDbContext appDbContext)
+    {private readonly AppDbContext DbContext;
+        private ShoppingCart(AppDbContext appDbContext)
         {
             DbContext = appDbContext;
         }
@@ -19,21 +20,21 @@ namespace BougieCandles.Data.Models
         public static ShoppingCart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext.Session;
-            var context = services.GetService<ApplicationDbContext>();
+            var context = services.GetService<AppDbContext>();
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", cartId);
             return new ShoppingCart(context) { ShoppingCartId = cartId };
 
         }
-        public void AddtoCart(Item item, int amount)
+        public void AddtoCart(Candle candles, int amount)
         {
-            var shoppingcartItem = DbContext.ShoppingCartItems.SingleOrDefault(s => s.Item.ItemId == item.ItemId && s.ShoppingCartId == ShoppingCartId);
+            var shoppingcartItem = DbContext.ShoppingCartItems.SingleOrDefault(s => s.Candle.CandleId == candles.CandleId && s.ShoppingCartId == ShoppingCartId);
             if (shoppingcartItem == null)
             {
                 shoppingcartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = ShoppingCartId,
-                    Item = item,
+                    Candle = candles,
                     Amount = 1
                 };
                 DbContext.ShoppingCartItems.Add(shoppingcartItem);
@@ -45,9 +46,9 @@ namespace BougieCandles.Data.Models
             DbContext.SaveChanges();
 
         }
-        public int RemoveFromCart(Item item)
+        public int RemoveFromCart(Candle candle)
         {
-            var shoppingcartItem = DbContext.ShoppingCartItems.SingleOrDefault(s => s.Item.ItemId == item.ItemId && s.ShoppingCartId == ShoppingCartId);
+            var shoppingcartItem = DbContext.ShoppingCartItems.SingleOrDefault(s => s.Candle.CandleId == candle.CandleId && s.ShoppingCartId == ShoppingCartId);
             var localAmount = 0;
             if (shoppingcartItem != null)
             {
@@ -67,11 +68,12 @@ namespace BougieCandles.Data.Models
             return localAmount;
 
         }
+
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ??
                 (ShoppingCartItems = 
-                DbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId).Include(s => s.Item).ToList());
+                DbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId).Include(s => s.Candle).ToList());
         }
         public void ClearCart()
         {
@@ -82,7 +84,7 @@ namespace BougieCandles.Data.Models
         public decimal GetShoppingCartTotal()
         {
             var total = DbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                .Select(c => c.Item.Price * c.Amount).Sum();
+                .Select(c => c.Candle.Price * c.Amount).Sum();
             return total;
         }
 

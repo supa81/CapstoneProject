@@ -19,7 +19,7 @@ namespace BougieCandles.Data.Models
                 context.Categories.AddRange(Categories.Select(c => c.Value));
             }
 
-            if (!context.Candle.Any())
+            if (!context.Candles.Any())
             {
                 context.AddRange
                 (
