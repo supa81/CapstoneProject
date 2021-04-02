@@ -4,14 +4,16 @@ using BougieCandles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BougieCandles.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210402151407_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,8 +87,8 @@ namespace BougieCandles.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Balance")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("CandleId")
                         .HasColumnType("int");
@@ -241,8 +243,8 @@ namespace BougieCandles.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "261cdfd5-ab93-4261-a51a-7e0888dfed39",
-                            ConcurrencyStamp = "0d4ce509-6e21-49cc-a05d-8e796c66161d",
+                            Id = "bbf7eeb8-8cb1-4dac-bc46-f0fea482cb69",
+                            ConcurrencyStamp = "ade67043-426c-4556-a627-0709524b9f25",
                             Name = "Users",
                             NormalizedName = "USERS"
                         });

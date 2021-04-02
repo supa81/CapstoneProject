@@ -28,7 +28,7 @@ namespace BougieCandles.Data.Models
         public int ZipCode { get; set; }
 
         [DisplayName("Balance")]
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
 
         [ForeignKey("Candle")]
         public int CandleId { get; set; }

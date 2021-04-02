@@ -61,7 +61,7 @@ namespace BougieCandles.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginViewModel.UserName };
+                var user = new IdentityUser() {UserName = loginViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
 
                 if (result.Succeeded)
