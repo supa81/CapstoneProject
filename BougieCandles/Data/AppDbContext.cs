@@ -22,7 +22,7 @@ namespace BougieCandles.Data
     //    //public DbSet<Order> Orders { get; set; }
     //    //public DbSet<OrderDetail> OrderDetails { get; set; }
     //}
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
              : base(options)
@@ -32,7 +32,10 @@ namespace BougieCandles.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Users", NormalizedName = "USERS" });
+            builder.Entity<IdentityRole>().HasData
+
+            (new IdentityRole { Name = "Users", NormalizedName = "USERS" },
+            (new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMERS" }));
         }
 
 
@@ -44,6 +47,6 @@ namespace BougieCandles.Data
         public IEnumerable Users { get; internal set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<BougieCandles.Data.Models.Customer> Customer { get; set; }
+        public DbSet<Customer> Customer { get; set; }
     }
 }

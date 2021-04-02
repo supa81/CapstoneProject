@@ -87,8 +87,8 @@ namespace BougieCandles
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "default", template: "{controller = Home}/{action = Index}/{id?}");
-                routes.MapRoute(name: "itemdetails", template: "Item/Details/{itemId?}", defaults: new { Controller = "Item", action = "Details" });
-                routes.MapRoute(name: "categoryfilter", template: "Item/{action}/{category?}", defaults: new { Controller = "Item", action = "List" });
+                routes.MapRoute(name: "candledetails", template: "Candle/Details/{CandleId?}", defaults: new { Controller = "Candle", action = "Details" });
+                routes.MapRoute(name: "categoryfilter", template: "Candle/{action}/{category?}", defaults: new { Controller = "Candle", action = "List" });
 
             });
             app.UseMvcWithDefaultRoute();

@@ -1,10 +1,13 @@
-﻿using BougieCandles.ViewModels;
+﻿using BougieCandles.Data;
+using BougieCandles.Data.Models;
+using BougieCandles.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BougieCandles.Controllers
@@ -13,19 +16,29 @@ namespace BougieCandles.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly AppDbContext _context;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, AppDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         public IActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customer.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            if (customer == null)
             {
-                ReturnUrl = returnUrl
-            });
+                return RedirectToAction("Create");
+            }
+            return View(customer);
+
+            //return View(new LoginViewModel
+            //{
+            //    ReturnUrl = returnUrl
+            //});
         }
 
         [HttpPost]
@@ -61,8 +74,10 @@ namespace BougieCandles.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() {UserName = loginViewModel.UserName };
+              
+                var user = new IdentityUser() { UserName = loginViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
+                
 
                 if (result.Succeeded)
                 {
