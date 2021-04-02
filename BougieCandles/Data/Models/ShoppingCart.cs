@@ -19,13 +19,26 @@ namespace BougieCandles.Data.Models
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
-            ISession session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?
+                .HttpContext.Session;
+
             var context = services.GetService<AppDbContext>();
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            session.SetString("CartId", cartId);
-            return new ShoppingCart(context) { ShoppingCartId = cartId };
 
+            session.SetString("CartId", cartId);
+
+            return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
+
+        //public static ShoppingCart GetCart(IServiceProvider services)
+        //{
+        //    ISession session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext.Session;
+        //    var context = services.GetService<AppDbContext>();
+        //    string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+        //    session.SetString("CartId", cartId);
+        //    return new ShoppingCart(context) { ShoppingCartId = cartId };
+
+        //}
         public void AddtoCart(Candle candles, int amount)
         {
             var shoppingcartItem = DbContext.ShoppingCartItems.SingleOrDefault(s => s.Candle.CandleId == candles.CandleId && s.ShoppingCartId == ShoppingCartId);
@@ -81,7 +94,7 @@ namespace BougieCandles.Data.Models
             DbContext.ShoppingCartItems.RemoveRange(cartitems);
             DbContext.SaveChanges();
         }
-        public decimal GetShoppingCartTotal()
+        public double GetShoppingCartTotal()
         {
             var total = DbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                 .Select(c => c.Candle.Price * c.Amount).Sum();

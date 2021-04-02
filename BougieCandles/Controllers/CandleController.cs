@@ -57,7 +57,7 @@ namespace BougieCandles.Controllers
                 candles = _candleRepository.Candles.Where(p => p.Name.ToLower().Contains(_searchString.ToLower()));
             }
 
-            return View("~/Views/Drink/List.cshtml", new CandleListViewModel { Candles = candles, CurrentCategory = "All candles" }); ;
+            return View("~/Views/Candle/List.cshtml", new CandleListViewModel { Candles = candles, CurrentCategory = "All candles" }); ;
         }
 
         public ViewResult Details(int candleId)

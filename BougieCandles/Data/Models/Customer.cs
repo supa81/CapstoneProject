@@ -30,6 +30,10 @@ namespace BougieCandles.Data.Models
         [DisplayName("Balance")]
         public decimal Balance { get; set; }
 
+        [ForeignKey("Candle")]
+        public int CandleId { get; set; }
+        public Candle Candle { get; set; }
+
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }

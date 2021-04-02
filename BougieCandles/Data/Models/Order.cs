@@ -59,7 +59,7 @@ namespace BougieCandles.Data.Models
 
         [BindNever]
         [ScaffoldColumn(false)]
-        public decimal OrderTotal { get; set; }
+        public double OrderTotal { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]

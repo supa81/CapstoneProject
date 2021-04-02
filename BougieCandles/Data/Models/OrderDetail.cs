@@ -11,7 +11,7 @@ namespace BougieCandles.Data.Models
         public int OrderId { get; set; }
         public int CandleId { get; set; }
         public int Amount { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public virtual Candle Candle { get; set; }
         public virtual Order Order { get; set; }
     }

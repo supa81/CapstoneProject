@@ -24,5 +24,7 @@ namespace BougieCandles.Data.Repositories
 
         public Candle GetCandleById(int candleId) => _appDbContext.Candles.FirstOrDefault(p => p.CandleId == candleId);
 
+
+
     }
 }

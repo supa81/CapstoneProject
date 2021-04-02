@@ -35,6 +35,7 @@ namespace BougieCandles.Data
             builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Users", NormalizedName = "USERS" });
         }
 
+
         //public DbSet<ShoppingStoreEntities> ShoppingStoreEntities { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Candle> Candles { get; set; }
@@ -43,5 +44,6 @@ namespace BougieCandles.Data
         public IEnumerable Users { get; internal set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<BougieCandles.Data.Models.Customer> Customer { get; set; }
     }
 }

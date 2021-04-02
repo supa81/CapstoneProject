@@ -20,7 +20,7 @@ namespace BougieCandles.Data.Mocks
                 {
                     new Candle {
                         Name = "Candle 1",
-                        Price = 7.95M,
+                        Price = 7.95,
                         Category = _categoryRepository.Categories.First(),
                         Instock = true,
                         Stock = 10,
@@ -30,7 +30,7 @@ namespace BougieCandles.Data.Mocks
                     },
                     new Candle {
                         Name = "Candle 2",
-                        Price = 7.95M,
+                        Price = 7.95,
                         Category = _categoryRepository.Categories.First(),
                         ShortDescription = "this is were the candle description will go",
                         Instock = true,
@@ -40,7 +40,7 @@ namespace BougieCandles.Data.Mocks
                     },
                     new Candle {
                         Name = "Candle 3",
-                        Price = 7.95M,
+                        Price = 7.95,
                         Category = _categoryRepository.Categories.First(),
                         ShortDescription = "this is were the candle description will go",
                         Instock = true,
@@ -50,7 +50,7 @@ namespace BougieCandles.Data.Mocks
                     },
                    new Candle {
                         Name = "Candle 4",
-                        Price = 7.95M,
+                        Price = 7.95,
                         Category = _categoryRepository.Categories.First(),
                         ShortDescription = "this is were the candle description will go",
                         Instock = true,
