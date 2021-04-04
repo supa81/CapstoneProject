@@ -9,6 +9,7 @@ using BougieCandles.Data;
 using BougieCandles.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using BougieCandles.ViewModels;
 
 namespace BougieCandles.Controllers
 {
@@ -22,31 +23,31 @@ namespace BougieCandles.Controllers
         }
 
         // GET: Customer
-        public async Task<IActionResult> Index(string candle)
+        public ActionResult Index()
         {
-            var appDbContext = _context.Customer.Include(c => c.Name).Include(c => c.IdentityUser);
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-    
-            return View(await appDbContext.ToListAsync());
+            var customer = _context.Customer.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            if (customer == null)
+            {
+                return RedirectToAction("Create");
+            }
+            return View(customer);
         }
 
         // GET: Customer/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var customer = await _context.Customer
-                .Include(c => c.Candle)
-                .Include(c => c.IdentityUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var customer = _context.Customer
+            .Include(c => c.IdentityUser)
+            .FirstOrDefault(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
             }
-
             return View(customer);
         }
 
@@ -63,12 +64,12 @@ namespace BougieCandles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Address,Name,ZipCode,Balance,CandleId,IdentityUserId")] Customer customer)
+        public IActionResult Create([Bind("Id,Address,Name,ZipCode,Balance,CandleId,IdentityUserId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(customer);
-                await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
@@ -77,20 +78,20 @@ namespace BougieCandles.Controllers
         }
 
         // GET: Customer/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customer.FindAsync(id);
+            var customer = _context.Customer.FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
             }
-            ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
-            ViewData["IdentityUserId"] = new SelectList(_context.Set<IdentityUser>(), "Id", "Id", customer.IdentityUserId);
+            //ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
+            //ViewData["IdentityUserId"] = new SelectList(_context.Set<IdentityUser>(), "Id", "Id", customer.IdentityUserId);
             return View(customer);
         }
 

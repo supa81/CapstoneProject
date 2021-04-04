@@ -1,28 +1,187 @@
-﻿<div class="row carousel-holder marginTop1">
-    <div class="col-md-12">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="slide-image" src="~/images/Black Cherry Merlot.jpg" alt="">
+﻿@*<div class="row carousel-holder marginTop1">
+        <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="slide-image" src="~/images/Black Cherry Merlot.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image" src="~/images/Blue Citrus.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image" src="~/images/Champagne Toast.jpg" alt="">
+                    </div>
                 </div>
-                <div class="item">
-                    <img class="slide-image" src="~/images/Blue Citrus.jpg" alt="">
-                </div>
-                <div class="item">
-                    <img class="slide-image" src="~/images/Champagne Toast.jpg" alt="">
-                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+        </div>
+    </div>*@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height:320px; width :100%" src="~/images/Orange Pineapple Punch.jpg">
+            <div class="carousel-caption">
+
+                <p>PineApple Punch!</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px; width :100%" src="~/images/Black Cherry Merlot.jpg">
+            <div class="carousel-caption">
+                <h3>Second slide</h3>
+                <p>Black Cherry Merlot</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px; width :100%" src="~/images/Champagne Toast.jpg">
+            <div class="carousel-caption">
+                <h3></h3>
+                <p>Champange Toast</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+</div>
+<div class="olContent f1"><h2 style=" color:black">Search Product/Category</h2></div>
+<div class="olSearch fr">
+    <input type="text" placeholder="Enter KeyWord" name="SearchKey" class="inputcomn houseText form-control" />
+    <div class="searchIcon">
+        <button type="button" class="searchBtn">
+            <img src="~/images/Unknown.jpg" />
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Our Candles</h2><small>Most Popular Candles</small>
         </div>
     </div>
 </div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/cherry blossom.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/Black Cherry Merlot.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/Blue Citrus.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/Champagne Toast.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/fresh cut lilicas.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+
+        <div class="img-thumbnail product-containeritem" style="height:300px">
+            <img class="img-responsive" title="Click to view Candle details"
+                 style="cursor:pointer;height:160px; width:100%;"
+                 src="~/images/Orange Pineapple Punch.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>$16.50</p>
+                <p>Available</p>
+                <div class="product-item-badge">New</div>
+            </div>
+        </div>
+    </div>
+</div>
+

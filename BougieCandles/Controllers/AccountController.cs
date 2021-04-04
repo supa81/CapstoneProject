@@ -27,18 +27,12 @@ namespace BougieCandles.Controllers
 
         public IActionResult Login(string returnUrl)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.Customer.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            if (customer == null)
-            {
-                return RedirectToAction("Create");
-            }
-            return View(customer);
 
-            //return View(new LoginViewModel
-            //{
-            //    ReturnUrl = returnUrl
-            //});
+            return View(new LoginViewModel
+            {
+                ReturnUrl = returnUrl
+
+            });
         }
 
         [HttpPost]
@@ -74,10 +68,10 @@ namespace BougieCandles.Controllers
         {
             if (ModelState.IsValid)
             {
-              
+
                 var user = new IdentityUser() { UserName = loginViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
-                
+
 
                 if (result.Succeeded)
                 {

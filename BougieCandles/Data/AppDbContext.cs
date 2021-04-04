@@ -10,43 +10,44 @@ using System.Threading.Tasks;
 
 namespace BougieCandles.Data
 {
-    //public class AppDbContext : IdentityDbContext<IdentityUser>
-    //{
-    //    //public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    //    //{
-    //    //}
-
-    //    //public DbSet<Candle> Candles { get; set; }
-    //    //public DbSet<Category> Categories { get; set; }
-    //    //public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
-    //    //public DbSet<Order> Orders { get; set; }
-    //    //public DbSet<OrderDetail> OrderDetails { get; set; }
-    //}
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-             : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
-        }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>().HasData
-
-            (new IdentityRole { Name = "Users", NormalizedName = "USERS" },
-            (new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMERS" }));
         }
 
-
-        //public DbSet<ShoppingStoreEntities> ShoppingStoreEntities { get; set; }
-        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Candle> Candles { get; set; }
         public DbSet<Category> Categories { get; set; }
-        // public DbSet<Producer> Producers { get; set; }
-        public IEnumerable Users { get; internal set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Customer> Customer { get; set; }
     }
+    //public class AppDbContext : IdentityDbContext
+    //{
+    //    public AppDbContext(DbContextOptions<AppDbContext> options)
+    //         : base(options)
+    //    {
+
+    //    }
+    //    protected override void OnModelCreating(ModelBuilder builder)
+    //    {
+    //        base.OnModelCreating(builder);
+    //        builder.Entity<IdentityRole>().HasData
+
+    //        (new IdentityRole { Name = "Users", NormalizedName = "USERS" },
+    //        (new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMERS" }));
+    //    }
+
+
+    //    //public DbSet<ShoppingStoreEntities> ShoppingStoreEntities { get; set; }
+    //    public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+    //    public DbSet<Candle> Candles { get; set; }
+    //    public DbSet<Category> Categories { get; set; }
+    //    // public DbSet<Producer> Producers { get; set; }
+    //    //public IEnumerable Users { get; internal set; }
+    //    public DbSet<OrderDetail> OrderDetails { get; set; }
+    //    public DbSet<Order> Orders { get; set; }
+
+    //}
 }
