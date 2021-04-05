@@ -16,6 +16,10 @@ namespace BougieCandles.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string EmailAddress { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 }

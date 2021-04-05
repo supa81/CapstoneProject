@@ -34,7 +34,7 @@ namespace BougieCandles.Controllers
             _shoppingCart.ShoppingCartItems = items;
             if (_shoppingCart.ShoppingCartItems.Count == 0)
             {
-                ModelState.AddModelError("", "Your card is empty, add some drinks first");
+                ModelState.AddModelError("", "Your card is empty, add some candles first");
             }
 
             if (ModelState.IsValid)

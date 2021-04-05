@@ -65,7 +65,7 @@ namespace BougieCandles.Controllers
             var candle = _candleRepository.Candles.FirstOrDefault(d => d.CandleId == candleId);
             if (candle == null)
             {
-                return View("~/Views/Error/Error.cshtml");
+                return View("~/Views/Candle/Details.cshtml");
             }
             return View(candle);
         }
