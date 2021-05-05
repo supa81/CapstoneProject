@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BougieCandles.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,12 +25,33 @@ namespace BougieCandles.Controllers
             _signInManager = signInManager;
             _context = context;
         }
+        public IActionResult Register() => View();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
+        {
+            
+            
+
+                var user = new IdentityUser() { UserName = loginViewModel.UserName };
+                var result = await _userManager.CreateAsync(user, loginViewModel.Password);
+
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("LoggedIn", "Account");
+                }
+            
+            return View(loginViewModel);
+        }
 
         public IActionResult Login(string returnUrl)
         {
 
             return View(new LoginViewModel
             {
+                
                 ReturnUrl = returnUrl
 
             });
@@ -38,8 +60,7 @@ namespace BougieCandles.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            if (!ModelState.IsValid)
-                return View(loginViewModel);
+            
 
             var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
 
@@ -60,27 +81,7 @@ namespace BougieCandles.Controllers
 
         }
 
-        public IActionResult Register() => View();
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var user = new IdentityUser() { UserName = loginViewModel.UserName };
-                var result = await _userManager.CreateAsync(user, loginViewModel.Password);
-
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("LoggedIn", "Account");
-                }
-            }
-            return View(loginViewModel);
-        }
-
+       
         public ViewResult LoggedIn() => View();
 
 

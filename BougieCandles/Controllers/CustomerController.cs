@@ -54,7 +54,7 @@ namespace BougieCandles.Controllers
         // GET: Customer/Create
         public IActionResult Create()
         {
-            ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId");
+            //ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId");
             ViewData["IdentityUserId"] = new SelectList(_context.Set<IdentityUser>(), "Id", "Id");
             return View();
         }
@@ -64,7 +64,7 @@ namespace BougieCandles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Address,Name,ZipCode,Balance,CandleId,IdentityUserId")] Customer customer)
+        public IActionResult Create([Bind("Id,Address,Name,ZipCode,IdentityUserId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace BougieCandles.Controllers
                 _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
+            //ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
             ViewData["IdentityUserId"] = new SelectList(_context.Set<IdentityUser>(), "Id", "Id", customer.IdentityUserId);
             return View(customer);
         }
@@ -100,7 +100,7 @@ namespace BougieCandles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Address,Name,ZipCode,Balance,CandleId,IdentityUserId")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Address,Name,ZipCode,IdentityUserId")] Customer customer)
         {
             if (id != customer.Id)
             {
@@ -127,7 +127,7 @@ namespace BougieCandles.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
+            //ViewData["CandleId"] = new SelectList(_context.Candles, "CandleId", "CandleId", customer.CandleId);
             ViewData["IdentityUserId"] = new SelectList(_context.Set<IdentityUser>(), "Id", "Id", customer.IdentityUserId);
             return View(customer);
         }
@@ -141,7 +141,7 @@ namespace BougieCandles.Controllers
             }
 
             var customer = await _context.Customer
-                .Include(c => c.Candle)
+                
                 .Include(c => c.IdentityUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)

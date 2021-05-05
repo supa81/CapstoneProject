@@ -79,8 +79,9 @@
                         @await Component.InvokeAsync("CategoryMenu")
                         <li><a asp-controller="About" asp-action="Index">About</a></li>
                         @await Component.InvokeAsync("ShoppingCartSummary")
+                        @await Html.PartialAsync("LoginPartial")
                     </ul>
-                    @await Html.PartialAsync("LoginPartial")
+                   
                     <form class="navbar-form navbar-right" asp-controller="Candle" asp-action="Search" method="get">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search for a candle" name="searchString" value="@ViewData["searchString"]">

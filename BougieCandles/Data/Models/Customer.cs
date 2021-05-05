@@ -27,12 +27,12 @@ namespace BougieCandles.Data.Models
         [DisplayName("ZipCode")]
         public int ZipCode { get; set; }
 
-        [DisplayName("Balance")]
-        public double Balance { get; set; }
+        //[DisplayName("Balance")]
+        //public double Balance { get; set; }
 
-        [ForeignKey("Candle")]
-        public int CandleId { get; set; }
-        public Candle Candle { get; set; }
+        //[ForeignKey("Candle")]
+        //public int CandleId { get; set; }
+        //public Candle Candle { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
